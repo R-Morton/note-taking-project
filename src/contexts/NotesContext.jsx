@@ -33,7 +33,6 @@ const notesReducer = (previousState, instructions) => {
             stateEditable.push(newNote)
 
             return stateEditable
-            break
         case "update":
             console.log("TODO: Update specific note and overwrite it in state")
             break
@@ -80,6 +79,7 @@ export default function NotesProvider(props){
 
     useEffect(() => {
         notesDispatch({type:"setup", data: persistantData})
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
@@ -90,6 +90,7 @@ export default function NotesProvider(props){
     //Autosaves changes to noted from reducer state into localstorage
     useEffect(() => {
         setPersistantData(JSON.stringify(notesData))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [notesData])
 
     return (
